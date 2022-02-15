@@ -7,7 +7,7 @@
     <title></title>
 </head>
 <body>
-    supplier entry site
+    supplier entry page
     <form id="form1" runat="server">
         <div>
         </div>
