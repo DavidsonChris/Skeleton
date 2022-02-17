@@ -7,6 +7,7 @@
     <title></title>
 </head>
 <body>
+    Staff data entry start-up page!
     <form id="form1" runat="server">
         <div>
         </div>
