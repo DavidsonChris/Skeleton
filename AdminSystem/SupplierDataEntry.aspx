@@ -7,9 +7,13 @@
     <title></title>
 </head>
 <body>
-    supplier entry page
-    <form id="form1" runat="server">
+    <p>
+        supplier entry page
+    </p>
+&nbsp;<form id="form1" runat="server">
         <div>
+            <asp:Label ID="suppliers" runat="server" Text="supplier name "></asp:Label>
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         </div>
     </form>
 </body>
