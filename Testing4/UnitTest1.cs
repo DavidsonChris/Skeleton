@@ -77,47 +77,49 @@ namespace Testing4
         {
             clssupplier asup = new clssupplier();
             Boolean Found = false;
-            string supplier_Name = "asdf";
-            Found = asup.find(supplier_Name);
+            int supplier_id = 1;
+            Found = asup.find(supplier_id);
             Assert.IsTrue(Found);
 
         }
         [TestMethod]
-        public void TestSup_Name()
+        public void TestSup_Name_find()
         {
             clssupplier asup = new clssupplier();
             Boolean Found =false;
             Boolean OK = true;
-            string supplier_Name = "asdf";
-            Found = asup.find(supplier_Name);
-            if (asup.sup_Name != "asdf")
+            int supplier_id = 1;
+            Found = asup.find(supplier_id);
+            if (asup.sup_Name != "connor")
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestSup_Start_Date()
+        public void TestSup_Start_Date_find()
         {
             clssupplier asup = new clssupplier();
             Boolean Found = false;
             Boolean OK = true;
-            string supplier_Name = "asdf";
-            Found = asup.find(supplier_Name);
-            if (asup.Sup_Start_Date != Convert.ToDateTime("01/01/2018"))
+            int supplier_id = 1;
+            Found = asup.find(supplier_id);
+            Console.WriteLine(Convert.ToDateTime("15/10/2022"));
+            Console.WriteLine(asup.Sup_Start_Date);
+            if (asup.Sup_Start_Date != Convert.ToDateTime("15/10/2022"))
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestAvailabilty()
+        public void TestAvailabilty_find()
         {
             clssupplier asup = new clssupplier();
             Boolean Found = false;
             Boolean OK = true;
-            string supplier_Name = "asdf";
-            Found = asup.find(supplier_Name);
+            int supplier_id = 1;
+            Found = asup.find(supplier_id);
             if (asup.available != 1)
             {
                 OK = false;
@@ -125,28 +127,28 @@ namespace Testing4
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void Testphones()
+        public void Testphones_find()
         {
             clssupplier asup = new clssupplier();
             Boolean Found = false;
             Boolean OK = true;
-            string supplier_Name = "asdf";
-            Found = asup.find(supplier_Name);
-            if (asup.phones != "a52")
+            int supplier_id = 1;
+            Found = asup.find(supplier_id);
+            if (asup.phones != "asd")
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void Testcontact()
+        public void Testcontact_find()
         {
             clssupplier asup = new clssupplier();
             Boolean Found = false;
             Boolean OK = true;
-            string supplier_Name = "asdf";
-            Found = asup.find(supplier_Name);
-            if (asup.contact != "example@gmail.com")
+            int supplier_id = 1;
+            Found = asup.find(supplier_id);
+            if (asup.contact != "123")
             {
                 OK = false;
             }
