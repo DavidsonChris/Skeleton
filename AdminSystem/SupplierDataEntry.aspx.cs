@@ -20,9 +20,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clssupplier ASupplier = new clssupplier();
-        ASupplier.sup_Name = supplierName.Text;
-        Session["ASupplier"] = ASupplier;
-        Response.Redirect("SupplierViewer.aspx");
+
+        string supName = supplierName.Text;
+        string supDateTime = Supplier_date.Text;
+        string supAvailbile = Supplier_availibilty.Text;
+        string supPhones = Supplier_phones.Text;
+        string supContact = Supplier_contact.Text;
+
+        string Error = "";
+        Error = ASupplier.valid(supName, supDateTime, supAvailbile, supPhones, supContact);
+
+        if (Error == "")
+        {
+            ASupplier.sup_Name = supName;
+            ASupplier.DateAdded = Convert.ToDateTime(supDateTime);
+            ASupplier.available = (int)Convert.ToInt64(supAvailbile);
+            ASupplier.phones = supPhones;
+            ASupplier.contact = supContact;
+            Session["ASupplier"] = ASupplier;
+            Response.Redirect("SupplierViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void BtnFind_click(object sender, EventArgs e)
