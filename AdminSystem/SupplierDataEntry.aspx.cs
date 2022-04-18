@@ -37,8 +37,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ASupplier.available = (int)Convert.ToInt64(supAvailbile);
             ASupplier.Phones_Supplied = supPhones;
             ASupplier.Contact_Number = supContact;
+            clsSupplierCollection clsSupplierCollection = new clsSupplierCollection();
+            clsSupplierCollection.ThisSupplier = ASupplier;
+            clsSupplierCollection.Add();
             Session["ASupplier"] = ASupplier;
-            Response.Redirect("SupplierViewer.aspx");
+            Response.Redirect("SupplierList.aspx");
         }
         else
         {

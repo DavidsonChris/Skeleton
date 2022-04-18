@@ -67,16 +67,16 @@ namespace Testing4
         {
             clssupplier Asup = new clssupplier { };
             string testdata = "a52";
-            Asup.phones = testdata;
-            Assert.AreEqual(Asup.phones, testdata);
+            Asup.Phones_Supplied = testdata;
+            Assert.AreEqual(Asup.Phones_Supplied, testdata);
         }
         [TestMethod]
         public void test_contact()
         {
             clssupplier asup = new clssupplier { };
             string testdata = "012";
-            asup.contact = testdata;
-            Assert.AreEqual(asup.contact, testdata);
+            asup.Contact_Number = testdata;
+            Assert.AreEqual(asup.Contact_Number, testdata);
         }
         [TestMethod]
         public void findMethodOK()
@@ -140,7 +140,7 @@ namespace Testing4
             Boolean OK = true;
             int supplier_id = 1;
             Found = asup.find(supplier_id);
-            if (asup.phones != "asd")
+            if (asup.Phones_Supplied != "asd")
             {
                 OK = false;
             }
@@ -154,7 +154,7 @@ namespace Testing4
             Boolean OK = true;
             int supplier_id = 1;
             Found = asup.find(supplier_id);
-            if (asup.contact != "123")
+            if (asup.Contact_Number != "123")
             {
                 OK = false;
             }

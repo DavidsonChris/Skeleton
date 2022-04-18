@@ -65,6 +65,26 @@ namespace Testing4
             clsSupplierCollection.supplierList = listsup;
             Assert.AreEqual(clsSupplierCollection.Count, listsup.Count);
         }
+        [TestMethod]
+        public void AddMethodOkay()
+        {
+            clsSupplierCollection clsSupplierCollection = new clsSupplierCollection();
+            clssupplier clssupplier = new clssupplier();
+            Int32 primaryKey = 0;
+            clssupplier.Active = true;
+            clssupplier.supplier_id = 1;
+            clssupplier.sup_Name = "qwe";
+            clssupplier.DateAdded = DateTime.Now.Date;
+            clssupplier.available = 1;
+            clssupplier.Phones_Supplied = "sadf";
+            clssupplier.Contact_Number = "0121";
+            clsSupplierCollection.ThisSupplier = clssupplier;
+            primaryKey = clsSupplierCollection.Add();
+            clssupplier.supplier_id = primaryKey;
+            clsSupplierCollection.ThisSupplier.find(primaryKey);
+            Assert.AreEqual(clsSupplierCollection.ThisSupplier, clssupplier);
+
+        }
         
 
 
