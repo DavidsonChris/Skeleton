@@ -35,8 +35,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ASupplier.sup_Name = supName;
             ASupplier.DateAdded = Convert.ToDateTime(supDateTime);
             ASupplier.available = (int)Convert.ToInt64(supAvailbile);
-            ASupplier.phones = supPhones;
-            ASupplier.contact = supContact;
+            ASupplier.Phones_Supplied = supPhones;
+            ASupplier.Contact_Number = supContact;
             Session["ASupplier"] = ASupplier;
             Response.Redirect("SupplierViewer.aspx");
         }
@@ -58,8 +58,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             supplierName.Text = clssupplier.sup_Name;
             Supplier_date.Text = clssupplier.Sup_Start_Date.ToString();
             Supplier_availibilty.Text = clssupplier.available.ToString();
-            Supplier_phones.Text = clssupplier.phones;
-            Supplier_contact.Text = clssupplier.contact;
+            Supplier_phones.Text = clssupplier.Phones_Supplied;
+            Supplier_contact.Text = clssupplier.Contact_Number;
         }
     }
 }

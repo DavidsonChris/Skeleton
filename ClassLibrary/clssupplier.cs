@@ -18,8 +18,8 @@ namespace ClassLibrary
         public string sup_Name { get { return msup_Name; } set { msup_Name = value; } }
         public DateTime Sup_Start_Date { get { return mSup_Start_Date; } set { mSup_Start_Date = value; } }
         public int available { get { return mavailable; } set { mavailable = value; } }
-        public string phones { get { return mphones; } set { mphones = value; } }
-        public string contact { get { return mcontact; } set { mcontact = value; } }
+        public string Phones_Supplied { get { return mphones; } set { mphones = value; } }
+        public string Contact_Number { get { return mcontact; } set { mcontact = value; } }
 
         public bool find(int Supplier_id)
         {
