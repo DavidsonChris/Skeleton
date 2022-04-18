@@ -15,7 +15,7 @@ namespace ClassLibrary
         public bool Active { get; set; }
         public int supplier_id { get { return msupplier_id; } set { msupplier_id = value; } }
         public DateTime DateAdded { get { return mDateAdded; } set { mDateAdded = value; } }
-        public string sup_Name { get {return msup_Name; } set { msup_Name = value;}}
+        public string sup_Name { get { return msup_Name; } set { msup_Name = value; } }
         public DateTime Sup_Start_Date { get { return mSup_Start_Date; } set { mSup_Start_Date = value; } }
         public int available { get { return mavailable; } set { mavailable = value; } }
         public string phones { get { return mphones; } set { mphones = value; } }
@@ -40,7 +40,64 @@ namespace ClassLibrary
             {
                 return false;
             }
-        
-        }   
+
+        }
+
+        public string valid(string sup_Name, string sup_Start_Date, string available, string phones, string contact)
+        {
+            string error = "";
+            DateTime DateTemp;
+            Int64 tempAvailable;
+            if (sup_Name.Length == 0)
+            {
+                error = error + "Supplier Name may not be blank : ";
+            }
+            if (sup_Name.Length > 20)
+            {
+                error = error + "Supplier Name may not be more then 20 characters : ";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(sup_Start_Date);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    error = error + "date cannot be in past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    error = error + "date cannot be in future : ";
+                }
+            }
+            catch
+            {
+                error = error + "not a valid date : ";
+            }
+            try
+            {
+                tempAvailable = Convert.ToInt64(available);
+                if (tempAvailable > 1)
+                {
+                    error = error + "availibilty cannot be more the 1 : ";
+                }
+                if (tempAvailable < 0)
+                {
+                    error = error + "availibilty cannot be less than 0 : ";
+                }
+            }
+            catch
+            {
+                error = error + "available not valid bit : ";
+            }
+            if (phones.Length > 200)
+            {
+                error = error + "phones supplied may not be more then 200 characters : ";
+            }
+            if (contact.Length > 25)
+            {
+                error = error + "contact info is more then 25 characters";
+            }
+
+            return error;
+        }
     }
 }

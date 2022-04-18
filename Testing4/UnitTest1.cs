@@ -7,6 +7,12 @@ namespace Testing4
     [TestClass]
     public class supplier
     {
+        string sup_Name = "asd";
+        string Sup_Start_Date = DateTime.Now.Date.ToString();
+        string available = "1";
+        string phones = "asf";
+        string contact = "@gmail";
+
         [TestMethod]
         public void TestMethod1()
         {
@@ -16,7 +22,7 @@ namespace Testing4
             Assert.IsNotNull(ASupplier);
         }
         [TestMethod]
-        public void TestMethod2 ()
+        public void TestMethod2()
         {
             clssupplier ASupplier = new clssupplier { };
             Boolean testData = true;
@@ -64,8 +70,8 @@ namespace Testing4
             Asup.phones = testdata;
             Assert.AreEqual(Asup.phones, testdata);
         }
-        [TestMethod] 
-        public void test_contact ()
+        [TestMethod]
+        public void test_contact()
         {
             clssupplier asup = new clssupplier { };
             string testdata = "012";
@@ -86,7 +92,7 @@ namespace Testing4
         public void TestSup_Name_find()
         {
             clssupplier asup = new clssupplier();
-            Boolean Found =false;
+            Boolean Found = false;
             Boolean OK = true;
             int supplier_id = 1;
             Found = asup.find(supplier_id);
@@ -154,6 +160,165 @@ namespace Testing4
             }
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreEqual(error, "");
+        }
+        [TestMethod]
+        public void supNameMinLessOne()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            string sup_Name = "";
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreNotEqual(error, "");
+        }
 
+        [TestMethod]
+        public void supNameMin()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            string sup_Name = "a";
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreEqual(error, "");
+        }
+        [TestMethod]
+        public void supNameMaxPlusOne()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            string sup_Name = "123456789012345678901";
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreNotEqual(error, "");
+        }
+        [TestMethod]
+        public void supNameExtream()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            string sup_Name = "";
+            sup_Name = sup_Name.PadRight(500, 'a');
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreNotEqual(error, "");
+        }
+        [TestMethod]
+        public void supDateExtreamMin()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            DateTime testDate;
+            testDate = DateTime.Now.Date;
+            testDate = testDate.AddYears(-100);
+            string Sup_Start_Date = testDate.ToString();
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void supDateMinusOne()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            DateTime testDate;
+            testDate = DateTime.Now.Date;
+            testDate = testDate.AddDays(-1);
+            string Sup_Start_Date = testDate.ToString();
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreNotEqual(error, "");
+        }
+        [TestMethod]
+        public void supDateExtreamMax()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            DateTime testDate;
+            testDate = DateTime.Now.Date;
+            testDate = testDate.AddYears(100);
+            string Sup_Start_Date = testDate.ToString();
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreNotEqual(error, "");
+        }
+        [TestMethod]
+        public void supDateAddOne()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            DateTime testDate;
+            testDate = DateTime.Now.Date;
+            testDate = testDate.AddDays(1);
+            string Sup_Start_Date = testDate.ToString();
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreNotEqual(error, "");
+        }
+        [TestMethod]
+        public void supDateNotValid()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            Sup_Start_Date = "asudig asd";
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreNotEqual(error, "");
+        }
+        [TestMethod]
+        public void supAvailibiltyMax()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            string available = "1";
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreEqual(error, "");
+        }
+        [TestMethod]
+        public void supAvailibiltyMin()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            string available = "0";
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreEqual(error, "");
+        }
+        [TestMethod]
+        public void supAvailibiltyMaxPlusOne()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            string available = "2";
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreNotEqual(error, "");
+        }
+        [TestMethod]
+        public void supAvailibiltyMinMinusOne()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            string available = "-1";
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreNotEqual(error, "");
+        }
+        [TestMethod]
+        public void supPhonesMax()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            string phones = "";
+            phones = phones.PadRight(201, 'a');
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreNotEqual(error, "");
+        }
+        [TestMethod]
+        public void supContactNumMax()
+        {
+            clssupplier clssupplier = new clssupplier();
+            string error = "";
+            string contact = "";
+            contact = contact.PadRight(25, 'a');
+            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            Assert.AreEqual(error, "");
+        }
     }
 }
