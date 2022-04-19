@@ -8,11 +8,28 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 Supplier_Id;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Supplier_Id = Convert.ToInt32(Session["Supplier_Id"]);
+        if (IsPostBack == false)
+        {
+            if (Supplier_Id != -1) {
+                DisplaySupplier();
+            }
+        }
     }
-
+    void DisplaySupplier()
+    {
+        clsSupplierCollection clsSupplierCollection = new clsSupplierCollection();
+        clsSupplierCollection.ThisSupplier.find(Supplier_Id);
+        Supplier_ID.Text = clsSupplierCollection.ThisSupplier.supplier_id.ToString();
+        supplierName.Text = clsSupplierCollection.ThisSupplier.sup_Name;
+        Supplier_date.Text = clsSupplierCollection.ThisSupplier.DateAdded.ToString();
+        Supplier_availibilty.Text = clsSupplierCollection.ThisSupplier.available.ToString();
+        Supplier_phones.Text = clsSupplierCollection.ThisSupplier.Phones_Supplied;
+        Supplier_contact.Text = clsSupplierCollection.ThisSupplier.Contact_Number;
+    }
     protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
     {
 
@@ -32,15 +49,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         if (Error == "")
         {
+            ASupplier.supplier_id = Supplier_Id;
             ASupplier.sup_Name = supName;
             ASupplier.DateAdded = Convert.ToDateTime(supDateTime);
             ASupplier.available = (int)Convert.ToInt64(supAvailbile);
             ASupplier.Phones_Supplied = supPhones;
             ASupplier.Contact_Number = supContact;
+
             clsSupplierCollection clsSupplierCollection = new clsSupplierCollection();
-            clsSupplierCollection.ThisSupplier = ASupplier;
-            clsSupplierCollection.Add();
-            Session["ASupplier"] = ASupplier;
+
+            if (Supplier_Id == -1)
+            {
+                clsSupplierCollection.ThisSupplier = ASupplier;
+                clsSupplierCollection.Add();
+            }
+            else
+            {
+                clsSupplierCollection.ThisSupplier.find(Supplier_Id);
+                clsSupplierCollection.ThisSupplier = ASupplier;
+                clsSupplierCollection.update(); 
+
+            }
             Response.Redirect("SupplierList.aspx");
         }
         else

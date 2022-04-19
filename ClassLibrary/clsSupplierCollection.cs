@@ -38,7 +38,6 @@ namespace ClassLibrary
         }
         private List<clssupplier> msupplierList = new List<clssupplier>();
         private clssupplier mThisSupplier = new clssupplier(); 
-
         public List<clssupplier> supplierList 
         {
             get 
@@ -71,6 +70,18 @@ namespace ClassLibrary
             {
                 mThisSupplier = value;
             } 
+        }
+
+        public void update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Supplier_Id", mThisSupplier.supplier_id);
+            DB.AddParameter("@supplier_Name", mThisSupplier.sup_Name);
+            DB.AddParameter("@Supplier_Start_Date", mThisSupplier.DateAdded);
+            DB.AddParameter("@Availibilty", mThisSupplier.available);
+            DB.AddParameter("@Phones_Supplied", mThisSupplier.Phones_Supplied);
+            DB.AddParameter("@Contact_Number", mThisSupplier.Contact_Number);
+            DB.Execute("sproc_tblSupplier_Update");
         }
     }
 }

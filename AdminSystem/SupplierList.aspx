@@ -13,6 +13,9 @@
             <br />
             <br />
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="ADD" />
+            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="EDIT" />
+            <br />
+            <asp:Label ID="lblError" runat="server" Text="LblError"></asp:Label>
         </div>
     </form>
 </body>
