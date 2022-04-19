@@ -23,7 +23,7 @@ namespace Testing4
             clssupplier clssupplier = new clssupplier();
             clssupplier.Active = true;
             clssupplier.supplier_id = 1;
-            clssupplier.sup_Name = "qwe";
+            clssupplier.Supplier_Name = "qwe";
             clssupplier.DateAdded = DateTime.Now.Date;
             clssupplier.available = 1;
             clssupplier.Phones_Supplied = "sadf";
@@ -40,7 +40,7 @@ namespace Testing4
             clssupplier clssupplier = new clssupplier();
             clssupplier.Active = true;
             clssupplier.supplier_id = 1;
-            clssupplier.sup_Name = "qwe";
+            clssupplier.Supplier_Name = "qwe";
             clssupplier.DateAdded = DateTime.Now.Date;
             clssupplier.available = 1;
             clssupplier.Phones_Supplied = "sadf";
@@ -56,7 +56,7 @@ namespace Testing4
             clssupplier clssupplier = new clssupplier();
             clssupplier.Active = true;
             clssupplier.supplier_id = 1;
-            clssupplier.sup_Name = "qwe";
+            clssupplier.Supplier_Name = "qwe";
             clssupplier.DateAdded = DateTime.Now.Date;
             clssupplier.available = 1;
             clssupplier.Phones_Supplied = "sadf";
@@ -73,7 +73,7 @@ namespace Testing4
             Int32 primaryKey = 0;
             clssupplier.Active = true;
             clssupplier.supplier_id = 1;
-            clssupplier.sup_Name = "qwe";
+            clssupplier.Supplier_Name = "qwe";
             clssupplier.DateAdded = DateTime.Now.Date;
             clssupplier.available = 1;
             clssupplier.Phones_Supplied = "sadf";
@@ -92,7 +92,7 @@ namespace Testing4
             clssupplier clssupplier = new clssupplier();
             Int32 primarykey = 0;
             clssupplier.supplier_id = 1;
-            clssupplier.sup_Name = "qwe";
+            clssupplier.Supplier_Name = "qwe";
             clssupplier.DateAdded = DateTime.Now.Date;
             clssupplier.available = 1;
             clssupplier.Phones_Supplied = "sadf";
@@ -100,7 +100,7 @@ namespace Testing4
             clsSupplierCollection.ThisSupplier = clssupplier;
             primarykey = clsSupplierCollection.Add();
             clssupplier.supplier_id = primarykey;
-            clssupplier.sup_Name = "qwe";
+            clssupplier.Supplier_Name = "qwe";
             clssupplier.DateAdded = DateTime.Now.Date;
             clssupplier.available = 1;
             clssupplier.Phones_Supplied = "sadf";
@@ -109,8 +109,26 @@ namespace Testing4
             clsSupplierCollection.update();
             clsSupplierCollection.ThisSupplier.find(primarykey);
             Assert.AreEqual(clsSupplierCollection.ThisSupplier, clssupplier);
-
-
+        }
+        [TestMethod]
+        public void DeleteMethodOk()
+        {
+            clsSupplierCollection clsSupplierCollection = new clsSupplierCollection();
+            clssupplier clssupplier = new clssupplier();
+            Int32 primarykey = 0;
+            clssupplier.supplier_id = 1;
+            clssupplier.Supplier_Name = "qwe";
+            clssupplier.DateAdded = DateTime.Now.Date;
+            clssupplier.available = 1;
+            clssupplier.Phones_Supplied = "sadf";
+            clssupplier.Contact_Number = "0121";
+            clsSupplierCollection.ThisSupplier = clssupplier;
+            primarykey = clsSupplierCollection.Add();
+            clssupplier.supplier_id = primarykey;
+            clsSupplierCollection.ThisSupplier.find(primarykey);
+            clsSupplierCollection.Delete();
+            Boolean found = clsSupplierCollection.ThisSupplier.find(primarykey);
+            Assert.IsFalse(found);
         }
         
 

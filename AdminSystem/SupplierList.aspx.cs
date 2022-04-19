@@ -20,7 +20,7 @@ public partial class _1_List : System.Web.UI.Page
         clsSupplierCollection supplierCollection = new clsSupplierCollection(); 
         lstSupplierList.DataSource = supplierCollection.supplierList;
         lstSupplierList.DataValueField = "Supplier_Id";
-        lstSupplierList.DataTextField = "sup_Name";
+        lstSupplierList.DataTextField = "Supplier_Id";
         lstSupplierList.DataBind();
 
     }
@@ -34,7 +34,7 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnEdit_Click(object sender, EventArgs e)
     {
         Int32 Supplier_Id; 
-        if (lstSupplierList.SelectedIndex != 1 )
+        if (lstSupplierList.SelectedIndex != -1 )
         {
             Supplier_Id = Convert.ToInt32(lstSupplierList.SelectedValue);
             Session["Supplier_Id"] = Supplier_Id;
@@ -43,6 +43,21 @@ public partial class _1_List : System.Web.UI.Page
         else
         {
             lblError.Text = "please select a record from list";
+        }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 Supplier_Id;
+        if (lstSupplierList.SelectedIndex != -1) 
+        {
+            Supplier_Id = Convert.ToInt32(lstSupplierList.SelectedIndex);
+            Session["Supplier_Id"] = Supplier_Id;
+            Response.Redirect("SupplierConfirmDelete.aspx");
+        }
+        else
+        {
+            lblError.Text = "please select a record from the list";
         }
     }
 }

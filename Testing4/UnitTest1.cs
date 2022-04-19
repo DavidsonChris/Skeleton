@@ -7,10 +7,10 @@ namespace Testing4
     [TestClass]
     public class supplier
     {
-        string sup_Name = "asd";
+        string Supplier_Name = "connor";
         string Sup_Start_Date = DateTime.Now.Date.ToString();
         string available = "1";
-        string phones = "asf";
+        string phones = "a52";
         string contact = "@gmail";
 
         [TestMethod]
@@ -42,8 +42,8 @@ namespace Testing4
         {
             clssupplier ASupplier = new clssupplier { };
             string testData = "company";
-            ASupplier.sup_Name = "company";
-            Assert.AreEqual(ASupplier.sup_Name, testData);
+            ASupplier.Supplier_Name = "company";
+            Assert.AreEqual(ASupplier.Supplier_Name, testData);
         }
         [TestMethod]
         public void test_Sup_Start_Date()
@@ -96,7 +96,7 @@ namespace Testing4
             Boolean OK = true;
             int supplier_id = 1;
             Found = asup.find(supplier_id);
-            if (asup.sup_Name != "connor")
+            if (asup.Supplier_Name != "connor")
             {
                 OK = false;
             }
@@ -110,9 +110,7 @@ namespace Testing4
             Boolean OK = true;
             int supplier_id = 1;
             Found = asup.find(supplier_id);
-            Console.WriteLine(Convert.ToDateTime("15/10/2022"));
-            Console.WriteLine(asup.Sup_Start_Date);
-            if (asup.Sup_Start_Date != Convert.ToDateTime("15/10/2022"))
+            if (asup.Sup_Start_Date != DateTime.Now.Date)
             {
                 OK = false;
             }
@@ -140,7 +138,7 @@ namespace Testing4
             Boolean OK = true;
             int supplier_id = 1;
             Found = asup.find(supplier_id);
-            if (asup.Phones_Supplied != "asd")
+            if (asup.Phones_Supplied != "a52")
             {
                 OK = false;
             }
@@ -154,7 +152,7 @@ namespace Testing4
             Boolean OK = true;
             int supplier_id = 1;
             Found = asup.find(supplier_id);
-            if (asup.Contact_Number != "123")
+            if (asup.Contact_Number != "1190")
             {
                 OK = false;
             }
@@ -165,7 +163,7 @@ namespace Testing4
         {
             clssupplier clssupplier = new clssupplier();
             string error = "";
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreEqual(error, "");
         }
         [TestMethod]
@@ -173,8 +171,8 @@ namespace Testing4
         {
             clssupplier clssupplier = new clssupplier();
             string error = "";
-            string sup_Name = "";
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            string Supplier_Name = "";
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreNotEqual(error, "");
         }
 
@@ -183,8 +181,8 @@ namespace Testing4
         {
             clssupplier clssupplier = new clssupplier();
             string error = "";
-            string sup_Name = "a";
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            string Supplier_Name = "a";
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreEqual(error, "");
         }
         [TestMethod]
@@ -192,8 +190,8 @@ namespace Testing4
         {
             clssupplier clssupplier = new clssupplier();
             string error = "";
-            string sup_Name = "123456789012345678901";
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            string Supplier_Name = "123456789012345678901";
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreNotEqual(error, "");
         }
         [TestMethod]
@@ -201,9 +199,9 @@ namespace Testing4
         {
             clssupplier clssupplier = new clssupplier();
             string error = "";
-            string sup_Name = "";
-            sup_Name = sup_Name.PadRight(500, 'a');
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            string Supplier_Name = "";
+            Supplier_Name = Supplier_Name.PadRight(500, 'a');
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreNotEqual(error, "");
         }
         [TestMethod]
@@ -215,7 +213,7 @@ namespace Testing4
             testDate = DateTime.Now.Date;
             testDate = testDate.AddYears(-100);
             string Sup_Start_Date = testDate.ToString();
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreNotEqual(error, "");
         }
 
@@ -228,7 +226,7 @@ namespace Testing4
             testDate = DateTime.Now.Date;
             testDate = testDate.AddDays(-1);
             string Sup_Start_Date = testDate.ToString();
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreNotEqual(error, "");
         }
         [TestMethod]
@@ -240,7 +238,7 @@ namespace Testing4
             testDate = DateTime.Now.Date;
             testDate = testDate.AddYears(100);
             string Sup_Start_Date = testDate.ToString();
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreNotEqual(error, "");
         }
         [TestMethod]
@@ -252,7 +250,7 @@ namespace Testing4
             testDate = DateTime.Now.Date;
             testDate = testDate.AddDays(1);
             string Sup_Start_Date = testDate.ToString();
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreNotEqual(error, "");
         }
         [TestMethod]
@@ -261,7 +259,7 @@ namespace Testing4
             clssupplier clssupplier = new clssupplier();
             string error = "";
             Sup_Start_Date = "asudig asd";
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreNotEqual(error, "");
         }
         [TestMethod]
@@ -270,7 +268,7 @@ namespace Testing4
             clssupplier clssupplier = new clssupplier();
             string error = "";
             string available = "1";
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreEqual(error, "");
         }
         [TestMethod]
@@ -279,7 +277,7 @@ namespace Testing4
             clssupplier clssupplier = new clssupplier();
             string error = "";
             string available = "0";
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreEqual(error, "");
         }
         [TestMethod]
@@ -288,7 +286,7 @@ namespace Testing4
             clssupplier clssupplier = new clssupplier();
             string error = "";
             string available = "2";
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreNotEqual(error, "");
         }
         [TestMethod]
@@ -297,7 +295,7 @@ namespace Testing4
             clssupplier clssupplier = new clssupplier();
             string error = "";
             string available = "-1";
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreNotEqual(error, "");
         }
         [TestMethod]
@@ -307,7 +305,7 @@ namespace Testing4
             string error = "";
             string phones = "";
             phones = phones.PadRight(201, 'a');
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreNotEqual(error, "");
         }
         [TestMethod]
@@ -317,7 +315,7 @@ namespace Testing4
             string error = "";
             string contact = "";
             contact = contact.PadRight(25, 'a');
-            error = clssupplier.valid(sup_Name, Sup_Start_Date, available, phones, contact);
+            error = clssupplier.valid(Supplier_Name, Sup_Start_Date, available, phones, contact);
             Assert.AreEqual(error, "");
         }
     }

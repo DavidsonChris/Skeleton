@@ -13,7 +13,7 @@ public partial class _1Viewer : System.Web.UI.Page
     {
         clssupplier ASupplier = new clssupplier();
         ASupplier = (clssupplier)Session["ASupplier"];
-        Response.Write(ASupplier.sup_Name);
+        Response.Write(ASupplier.Supplier_Name);
 
     }
 }

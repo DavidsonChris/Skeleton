@@ -24,7 +24,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsSupplierCollection clsSupplierCollection = new clsSupplierCollection();
         clsSupplierCollection.ThisSupplier.find(Supplier_Id);
         Supplier_ID.Text = clsSupplierCollection.ThisSupplier.supplier_id.ToString();
-        supplierName.Text = clsSupplierCollection.ThisSupplier.sup_Name;
+        supplierName.Text = clsSupplierCollection.ThisSupplier.Supplier_Name;
         Supplier_date.Text = clsSupplierCollection.ThisSupplier.DateAdded.ToString();
         Supplier_availibilty.Text = clsSupplierCollection.ThisSupplier.available.ToString();
         Supplier_phones.Text = clsSupplierCollection.ThisSupplier.Phones_Supplied;
@@ -50,7 +50,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Error == "")
         {
             ASupplier.supplier_id = Supplier_Id;
-            ASupplier.sup_Name = supName;
+            ASupplier.Supplier_Name = supName;
             ASupplier.DateAdded = Convert.ToDateTime(supDateTime);
             ASupplier.available = (int)Convert.ToInt64(supAvailbile);
             ASupplier.Phones_Supplied = supPhones;
@@ -87,7 +87,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         found = clssupplier.find(supplier_Id);
         if (found == true)
         {
-            supplierName.Text = clssupplier.sup_Name;
+            supplierName.Text = clssupplier.Supplier_Name;
             Supplier_date.Text = clssupplier.Sup_Start_Date.ToString();
             Supplier_availibilty.Text = clssupplier.available.ToString();
             Supplier_phones.Text = clssupplier.Phones_Supplied;
