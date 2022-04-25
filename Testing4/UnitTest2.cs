@@ -130,8 +130,40 @@ namespace Testing4
             Boolean found = clsSupplierCollection.ThisSupplier.find(primarykey);
             Assert.IsFalse(found);
         }
-        
-
+        [TestMethod]
+        public void reportByPhonesOK()
+        {
+            clsSupplierCollection clsSupplierCollection = new clsSupplierCollection();
+            clsSupplierCollection collectionfiltered = new clsSupplierCollection();
+            collectionfiltered.ReportByPhones("xxx");
+            Assert.AreEqual(clsSupplierCollection.Count, collectionfiltered.Count);
+        }
+        [TestMethod]
+        public void ReportBypostCodeTestDataFound()
+        {
+            clsSupplierCollection clsSupplierCollection = new clsSupplierCollection(); 
+            Boolean OK = true;
+            clsSupplierCollection.ReportByPhones("a52");
+            Console.WriteLine(clsSupplierCollection.Count);
+            if (clsSupplierCollection.Count == 2)
+            {
+                if (clsSupplierCollection.supplierList[0].supplier_id != 68)
+                {
+                    
+                    OK = false;
+                }
+                if (clsSupplierCollection.supplierList[1].supplier_id != 72)
+                {
+                
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
 
     }
 }

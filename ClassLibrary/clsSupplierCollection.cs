@@ -54,24 +54,10 @@ namespace ClassLibrary
         }
         public clsSupplierCollection()
         {
-            Int32 index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("selectAll");
-            RecordCount = DB.Count;
-            while (index < RecordCount)
-            {
-                clssupplier clssupplier = new clssupplier();
-
-                clssupplier.supplier_id = Convert.ToInt32(DB.DataTable.Rows[0]["Supplier_Id"]);
-                clssupplier.Supplier_Name = Convert.ToString(DB.DataTable.Rows[0]["supplier_Name"]);
-                clssupplier.Sup_Start_Date = Convert.ToDateTime(DB.DataTable.Rows[0]["Supplier_Start_Date"]);
-                clssupplier.available = Convert.ToByte(DB.DataTable.Rows[0]["Availibilty"]);
-                clssupplier.Phones_Supplied = Convert.ToString(DB.DataTable.Rows[0]["Phones_Supplied"]);
-                clssupplier.Contact_Number = Convert.ToString(DB.DataTable.Rows[0]["Contact_Number"]);
-                msupplierList.Add(clssupplier);
-                index++;
-            }
+            populatedArray(DB);
+           
         }
 
         public void update()
@@ -91,6 +77,35 @@ namespace ClassLibrary
             clsDataConnection dataConnection = new clsDataConnection();
             dataConnection.AddParameter("@Supplier_Id", mThisSupplier.supplier_id);
             dataConnection.Execute("sprco_tblSupplier_Delete");
+        }
+        public void ReportByPhones(string Phones_Supplied)
+        {
+            clsDataConnection clsDataConnection = new clsDataConnection();
+            clsDataConnection.AddParameter("@Phones_Supplied", Phones_Supplied);
+            clsDataConnection.Execute("sproc_tblSuppliers_FilterByPhones");
+            populatedArray(clsDataConnection);
+        }
+
+        void populatedArray(clsDataConnection DB)
+        {
+            Int32 index = 0;
+            Int32 REcordCount;
+
+            REcordCount = DB.Count;
+            msupplierList = new List<clssupplier>();
+            while (index < REcordCount)
+            {
+                clssupplier clssupplier = new clssupplier();
+                clssupplier.supplier_id = Convert.ToInt32(DB.DataTable.Rows[index]["Supplier_Id"]);
+                clssupplier.Supplier_Name = Convert.ToString(DB.DataTable.Rows[index]["supplier_Name"]);
+                clssupplier.Sup_Start_Date = Convert.ToDateTime(DB.DataTable.Rows[index]["Supplier_Start_Date"]);
+                clssupplier.available = Convert.ToByte(DB.DataTable.Rows[index]["Availibilty"]);
+                clssupplier.Phones_Supplied = Convert.ToString(DB.DataTable.Rows[index]["Phones_Supplied"]);
+                clssupplier.Contact_Number = Convert.ToString(DB.DataTable.Rows[index]["Contact_Number"]);
+                msupplierList.Add(clssupplier);
+                index++;
+
+            }
         }
     }
 }

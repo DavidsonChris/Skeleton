@@ -20,7 +20,7 @@ public partial class _1_List : System.Web.UI.Page
         clsSupplierCollection supplierCollection = new clsSupplierCollection(); 
         lstSupplierList.DataSource = supplierCollection.supplierList;
         lstSupplierList.DataValueField = "Supplier_Id";
-        lstSupplierList.DataTextField = "Supplier_Id";
+        lstSupplierList.DataTextField = "Phones_Supplied";
         lstSupplierList.DataBind();
 
     }
@@ -59,5 +59,26 @@ public partial class _1_List : System.Web.UI.Page
         {
             lblError.Text = "please select a record from the list";
         }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsSupplierCollection clsSupplierCollection = new clsSupplierCollection();
+        clsSupplierCollection.ReportByPhones(txtPhone.Text);
+        lstSupplierList.DataSource = clsSupplierCollection.supplierList;
+        lstSupplierList.DataValueField = "Supplier_Id";
+        lstSupplierList.DataTextField = "Phones_Supplied";
+        lstSupplierList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsSupplierCollection clsSupplierCollection = new clsSupplierCollection();
+        clsSupplierCollection.ReportByPhones("");
+        txtPhone.Text = "";
+        lstSupplierList.DataSource = clsSupplierCollection.supplierList;
+        lstSupplierList.DataValueField = "Supplier_Id";
+        lstSupplierList.DataTextField = "Phones_Supplied";
+        lstSupplierList.DataBind();
     }
 }

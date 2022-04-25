@@ -33,7 +33,6 @@ namespace ClassLibrary
                 mavailable = Convert.ToByte(DB.DataTable.Rows[0]["Availibilty"]);
                 mphones = Convert.ToString(DB.DataTable.Rows[0]["Phones_Supplied"]);
                 mcontact = Convert.ToString(DB.DataTable.Rows[0]["Contact_Number"]);
-
                 return true;
             }
             else
