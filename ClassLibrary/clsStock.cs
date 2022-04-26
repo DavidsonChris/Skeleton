@@ -117,7 +117,56 @@ namespace ClassLibrary
             }
 
         }
+
+        public string Valid(string PhoneName, string PhoneColour, string ReleaseDate)
+        {
+            string Error = "";
+            DateTime DateTemp;
+
+            if (PhoneName.Length == 0)
+            {
+                Error = Error + "The phone name must not be blank : ";
+            }
+
+            if (PhoneName.Length > 50)
+            {
+                Error = Error + "The phone name must be less than 50 characters : ";
+            }
+            try
+            {
+
+                DateTemp = Convert.ToDateTime(ReleaseDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+
+            catch
+            {
+                Error = Error + "The date was not valid date : ";
+            }
+
+            if (PhoneColour.Length == 0)
+            {
+                Error = Error + "The phone colour must not be blank :";
+            }
+
+            if (PhoneColour.Length > 20)
+            {
+                Error = Error + "The phone colour must be less than 20 characters :";
+
+            }
+
+            return Error;
+
+        }
     }
 }
+
 
 
