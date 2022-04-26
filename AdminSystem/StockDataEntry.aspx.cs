@@ -17,16 +17,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsStock AnStock = new clsStock();
 
-        AnStock.phoneName = txtphoneName.Text;
-        AnStock.Price = Convert.ToInt32(txtPrice.Text);
-        AnStock.releaseDate = Convert.ToDateTime(txtreleaseDate.Text);
-        AnStock.Availability = chkAvailability.Checked;
-        AnStock.phoneColour = txtphoneColour.Text;
+        string phoneName = txtphoneName.Text;
+        string Price = txtPrice.Text;
+        string releaseDate = txtreleaseDate.Text;
+        string phoneColour = txtphoneColour.Text;
+        string Error="";
+        Error = AnStock.Valid(phoneName, phoneColour, releaseDate);
+        if (Error == "")
+        {
 
-        Session["AnStock"] = AnStock;
+            AnStock.phoneName = txtphoneName.Text;
+            AnStock.Price = Convert.ToInt32(txtPrice.Text);
+            AnStock.releaseDate = Convert.ToDateTime(txtreleaseDate.Text);
+            AnStock.Availability = chkAvailability.Checked;
+            AnStock.phoneColour = txtphoneColour.Text;
+
+            Session["AnStock"] = AnStock;
 
 
-        Response.Redirect("StockViewer.aspx");
+            Response.Write("StockViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
 }
