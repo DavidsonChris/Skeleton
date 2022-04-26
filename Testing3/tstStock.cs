@@ -7,9 +7,9 @@ namespace Testing3
     [TestClass]
     public class tstStock
     {
-        string PhoneName = "Samsung Galaxy S22 Ultra";
-        string PhoneColour = "Burgundy";
-        string ReleaseDate = DateTime.Now.Date.ToString();
+        string phoneName = "Samsung Galaxy S22 Ultra";
+        string phoneColour = "Burgundy";
+        string releaseDate = DateTime.Now.Date.ToString();
     
         [TestMethod]
         public void InstanceOK()
@@ -198,214 +198,214 @@ namespace Testing3
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            Error = AnStock.Valid(PhoneName,PhoneColour,ReleaseDate);
+            Error = AnStock.Valid(phoneName,phoneColour,releaseDate);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void PhoneNameMinLessOne()
+        public void phoneNameMinLessOne()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string PhoneName = "";
-            Error = AnStock.Valid(PhoneName, PhoneColour, ReleaseDate);
+            string phoneName = "";
+            Error = AnStock.Valid(phoneName, phoneColour, releaseDate);
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void PhoneNameMin()
+        public void phoneNameMin()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string PhoneName = "a"; 
-            Error = AnStock.Valid(PhoneName, PhoneColour, ReleaseDate);
+            string phoneName = "a"; 
+            Error = AnStock.Valid(phoneName, phoneColour, releaseDate);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void PhoneNameMinPlusOne()
+        public void phoneNameMinPlusOne()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string PhoneName = "aa"; 
-            Error = AnStock.Valid(PhoneName, PhoneColour, ReleaseDate);
+            string phoneName = "aa"; 
+            Error = AnStock.Valid(phoneName, phoneColour, releaseDate);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void PhoneNameMaxLessOne()
+        public void phoneNameMaxLessOne()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string PhoneName = "";
-            PhoneName = PhoneName.PadRight(49, 'a');
-            Error = AnStock.Valid(PhoneName, PhoneColour, ReleaseDate);
+            string phoneName = "";
+            phoneName = phoneName.PadRight(49, 'a');
+            Error = AnStock.Valid(phoneName, phoneColour, releaseDate);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void PhoneNameMax()
+        public void phoneNameMax()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string PhoneName = "";
-            PhoneName = PhoneName.PadRight(50, 'a');
-            Error = AnStock.Valid(PhoneName,PhoneColour,ReleaseDate);
+            string phoneName = "";
+            phoneName = phoneName.PadRight(50, 'a');
+            Error = AnStock.Valid(phoneName,phoneColour,releaseDate);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void PhoneNameMaxPlusOne()
+        public void phoneNameMaxPlusOne()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string PhoneName = "";
-            Error = AnStock.Valid(PhoneName,PhoneColour,ReleaseDate);
+            string phoneName = "";
+            Error = AnStock.Valid(phoneName,phoneColour,releaseDate);
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void PhoneNameMid()
+        public void phoneNameMid()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string PhoneName = "";
-            PhoneName = PhoneName.PadRight(25, 'a');
-            Error = AnStock.Valid(PhoneName,PhoneColour,ReleaseDate);
+            string phoneName = "";
+            phoneName = phoneName.PadRight(25, 'a');
+            Error = AnStock.Valid(phoneName,phoneColour,releaseDate);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void ReleaseDateExtremeMin()
+        public void releaseDateExtremeMin()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-100);
-            string ReleaseDate = TestDate.ToString();
-            Error = AnStock.Valid(PhoneName, PhoneColour, ReleaseDate);
+            string releaseDate = TestDate.ToString();
+            Error = AnStock.Valid(phoneName, phoneColour, releaseDate);
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void ReleaseDateMinLessOne()
+        public void releaseDateMinLessOne()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-1);
-            string ReleaseDate = TestDate.ToString();
-            Error = AnStock.Valid(PhoneName, PhoneColour, ReleaseDate);
+            string releaseDate = TestDate.ToString();
+            Error = AnStock.Valid(phoneName, phoneColour, releaseDate);
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void ReleaseDateMinPlusOne()
+        public void releaseDateMinPlusOne()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(1);
-            string ReleaseDate = TestDate.ToString();
-            Error = AnStock.Valid(PhoneName, PhoneColour, ReleaseDate);
+            string releaseDate = TestDate.ToString();
+            Error = AnStock.Valid(phoneName, phoneColour, releaseDate);
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void ReleaseDateExtremeMax()
+        public void releaseDateExtremeMax()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
-            string ReleaseDate = TestDate.ToString();
-            Error = AnStock.Valid(PhoneName, PhoneColour, ReleaseDate);
+            string releaseDate = TestDate.ToString();
+            Error = AnStock.Valid(phoneName, phoneColour, releaseDate);
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void ReleaseDateInvalidData()
+        public void releaseDateInvalidData()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string ReleaseDate = "This is not a date!";
-            Error = AnStock.Valid(PhoneName, PhoneColour, ReleaseDate);
+            string releaseDate = "This is not a date!";
+            Error = AnStock.Valid(phoneName, phoneColour, releaseDate);
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void PhoneColourLessOne()
+        public void phoneColourLessOne()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string PhoneColour = "";
-            Error = AnStock.Valid(PhoneName,PhoneColour,ReleaseDate);
+            string phoneColour = "";
+            Error = AnStock.Valid(phoneName,phoneColour,releaseDate);
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void PhoneColourMin()
+        public void phoneColourMin()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string PhoneColour = "a";
-            Error = AnStock.Valid(PhoneName,PhoneColour,ReleaseDate);
+            string phoneColour = "a";
+            Error = AnStock.Valid(phoneName,phoneColour,releaseDate);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void PhoneColourMinPlusOne()
+        public void phoneColourMinPlusOne()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string PhoneColour = "aa";
-            Error = AnStock.Valid(PhoneName,PhoneColour,ReleaseDate);
+            string phoneColour = "aa";
+            Error = AnStock.Valid(phoneName,phoneColour,releaseDate);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void PhoneColourMaxLessOne()
+        public void phoneColourMaxLessOne()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string PhoneColour = "";
-            PhoneColour = PhoneColour.PadRight(19, 'a');
-            Error = AnStock.Valid(PhoneName,PhoneColour,ReleaseDate);
+            string phoneColour = "";
+            phoneColour = phoneColour.PadRight(19, 'a');
+            Error = AnStock.Valid(phoneName,phoneColour,releaseDate);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void PhoneColourMax()
+        public void phoneColourMax()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string PhoneColour = "";
-            PhoneColour = PhoneColour.PadRight(20, 'a');
-            Error = AnStock.Valid(PhoneName,PhoneColour,ReleaseDate);
+            string phoneColour = "";
+            phoneColour = phoneColour.PadRight(20, 'a');
+            Error = AnStock.Valid(phoneName,phoneColour,releaseDate);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void PhoneColourMaxPlusOne()
+        public void phoneColourMaxPlusOne()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string PhoneColour = "";
-            Error = AnStock.Valid(PhoneName,PhoneColour,ReleaseDate);
+            string phoneColour = "";
+            Error = AnStock.Valid(phoneName,phoneColour,releaseDate);
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void PhoneColourMid()
+        public void phoneColourMid()
         {
             clsStock AnStock = new clsStock();
             String Error = "";
-            string PhoneColour = "aaaaaaaaaa";
-            Error = AnStock.Valid(PhoneName,PhoneColour,ReleaseDate);
+            string phoneColour = "aaaaaaaaaa";
+            Error = AnStock.Valid(phoneName,phoneColour,releaseDate);
             Assert.AreEqual(Error, "");
         }
 
